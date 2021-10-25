@@ -1,10 +1,8 @@
 const Razorpay = require("razorpay");
-
 const rzpInstance = new Razorpay({
-    key_id: 'rzp_test_Za2z7I4DwM3hq2',
-    key_secret: '0vLzh7U4MDCCToBIyUG2xKZl'
+    key_id: process.env.KEY_ID,
+    key_secret: process.env.KEY_SECRET
 });
-
 
 module.exports.sendDonation = function(req,res){
     const name = req.body.name;
@@ -31,7 +29,7 @@ module.exports.sendDonation = function(req,res){
         "date": Math.round(Date.now()/1000),
         "receipt": receipt,
         "callback_method": "get",
-        "callback_url": "http://127.0.0.1:3000/donationthanks"
+        // "callback_url": "http://127.0.0.1:3000/donationthanks"
     }
 
     // creating a new invoice
@@ -39,7 +37,6 @@ module.exports.sendDonation = function(req,res){
         if(error) {
             console.log(error);
         } else {
-            console.log(invoice);
             const invoiceId = invoice.id.toString();
             const orderId = invoice.order_id.toString();
             const customerDetails = {
@@ -51,7 +48,6 @@ module.exports.sendDonation = function(req,res){
             const amount = invoice.amount.toString();
             const paymentURL = invoice.short_url.toString();
             // const currentDonation = new Donation(invoiceId, orderId, receipt, customerDetails, amount, paymentURL);
-            //console.log(currentDonation);
             res.json(paymentURL);
         }
     });
