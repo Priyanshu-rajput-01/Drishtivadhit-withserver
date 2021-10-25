@@ -7,7 +7,6 @@ const rzpInstance = new Razorpay({
 
 
 module.exports.sendDonation = function(req,res){
-    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     
