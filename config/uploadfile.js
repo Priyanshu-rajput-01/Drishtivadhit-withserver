@@ -6,6 +6,5 @@ filename:(req,res,cb)=>{
     cb(null,Date.now()+"--"+file.originalname);
 },
 });
-
 const upload = multer({storage:filestorage});
 module.exports = upload;
