@@ -47,7 +47,6 @@ module.exports.sendDonation = function(req,res){
             };
             const amount = invoice.amount.toString();
             const paymentURL = invoice.short_url.toString();
-            // const currentDonation = new Donation(invoiceId, orderId, receipt, customerDetails, amount, paymentURL);
             res.json(paymentURL);
         }
     });
