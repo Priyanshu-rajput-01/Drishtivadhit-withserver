@@ -51,7 +51,6 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/hindi');
     }
     catch(err){
-    req.flash('error','लॉग आउट करने में त्रुटि');
-
+        req.flash('error','लॉग आउट करने में त्रुटि');
     }
 }
