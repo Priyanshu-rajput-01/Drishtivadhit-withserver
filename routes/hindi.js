@@ -26,5 +26,4 @@ router.post('/login',passport.authenticate('local',{
       res.redirect('/hindi');
     });
 
-
 module.exports =router;
