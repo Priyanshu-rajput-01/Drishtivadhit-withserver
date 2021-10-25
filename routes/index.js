@@ -31,10 +31,9 @@ router.get('/event',mainController.event);
 router.get('/downloaddoc',mainController.downloaddocument);
 router.get('/logout',logController.destroySession);
 router.get('/donationthanks',donationcontroller.donationthanks);
-
+router.get('/download/document/:file',mainController.downloaddocument);
 
 // Get request hindi
-
 router.use('/hindi',require('./hindi'));
 
 // Post requests
@@ -44,7 +43,6 @@ router.post('/login',passport.authenticate('local',{
 
 router.post('/uploadmultiple',passport.checkAuthentication ,docController.docupload);
 router.post('/uploadpublic',passport.checkAuthentication ,docController.pdocupload);
-router.get('/download/document/:file',mainController.downloaddocument);
 router.post('/newDonation',donationcontroller.sendDonation);
 
 module.exports = router;
