@@ -26,7 +26,6 @@ router.get('/register',mainController.register);
 router.get('/docupload',mainController.docupload);
 router.get('/document/:filename',mainController.viewdoc)
 router.get('/pdocupload',mainController.pdocupload);
-
 router.get('/loginmain',mainController.loginmain);
 router.get('/event',mainController.event);
 router.get('/downloaddoc',mainController.downloaddocument);
