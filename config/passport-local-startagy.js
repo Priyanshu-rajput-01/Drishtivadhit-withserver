@@ -9,28 +9,19 @@ passport.use(new localStratagy({
 
 },
 function(firstname,pass,done){
-
         let user = User.findOne({firstname:firstname},function(err,user){
-            
         if(err){
             console.log('error in finding user');
             value = 'error in finding user';
-
             return done("this is error" + err);
         }   
         if(!user || user.pass != pass){
             console.log('Invallid credentials');
             value = 'Invallid credentials';
-            // req.flash('error','Invallid credentials');
             return done(null, false);
         }
         return done(null, user);
-        
-
-
-
     })
-
 }))
 
 passport.serializeUser(function(user, done){
@@ -60,9 +51,6 @@ passport.checkAuthentication = function(req,res,next){
 passport.setAuthenticatedUser = function(req,res,next){
     if(req.isAuthenticated()){
         res.locals.user = req.user;
-
-
-        // console.log(res.local);
     }
     next();
 }
