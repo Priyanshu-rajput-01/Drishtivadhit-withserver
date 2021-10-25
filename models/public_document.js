@@ -38,7 +38,6 @@ var storage = new GridFsStorage({
 
 pdocSchema.statics.uploadedFile = multer({storage:storage}).single('userFiles');
 pdocSchema.statics.filepath = "/document/";
-
 const PublicDocuments = new mongoose.model("PublicDocuments", pdocSchema);
 
 module.exports = PublicDocuments;
