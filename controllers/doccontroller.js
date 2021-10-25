@@ -32,13 +32,10 @@ module.exports.docupload = async function(req,res){
 module.exports.pdocupload = async function(req,res){
     try{
         let user = req.user.id;
-        
         let pdoc = await P_Doc.uploadedFile(req,res,async function(err){
-            
             if(err){
                 console.log('*****************Multer err ',err);
             }
-
             await P_Doc.create({
                 title: req.body.title,
                 description: req.body.description,
@@ -47,7 +44,6 @@ module.exports.pdocupload = async function(req,res){
             })
             req.flash('success','Document uploaded successfully');
             return res.redirect('back');
-
         });
     }
     catch(err){
@@ -55,5 +51,4 @@ module.exports.pdocupload = async function(req,res){
         console.log('err',err);
         return res.redirect('back');
     }
-    
 }
