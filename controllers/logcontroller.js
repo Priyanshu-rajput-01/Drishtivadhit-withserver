@@ -30,7 +30,7 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/');
     }
     catch(err){
-         // flashing error message
+        // flashing error message
         req.flash('error','Error while logging out');
     }
 }
